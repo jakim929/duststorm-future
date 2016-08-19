@@ -1,0 +1,6 @@
+pro setarray,
+fname = '/home2/sunwoo/csvoutput/point_tust_current.csv'
+fname1 = '/home2/sunwoo/csvoutput/point_tust_future.csv'
+read_data1, ptustc, fname
+read_data1, ptustf, fname1
+end

@@ -1,0 +1,21 @@
+pro frequency_comp
+
+dx = 117
+dy = 111
+
+data1 = read_tiff('/home2/sunwoo/final_output/coutput1/SSI_output_current.tif')
+data2 = read_tiff('/home2/sunwoo/final_output/foutput1/SSI_output_future0.tif')
+
+result = intarr(117,111,12)
+compresult = intarr(117,111)
+
+result = data2 - data1
+
+compresult = result(*,*,0) +result(*,*,1) +result(*,*,2) +result(*,*,3) +result(*,*,4) $
+				 +result(*,*,5) +result(*,*,6) +result(*,*,7) +result(*,*,8) +result(*,*,9) $
+				 +result(*,*,10) +result(*,*,11)
+				 
+write_tiff, '/home2/sunwoo/comparison_output/frequency_comp_yearly.tif', compresult, /float
+write_tiff, '/home2/sunwoo/comparison_output/frequency_comp_monthly.tif', result, /float
+
+end
